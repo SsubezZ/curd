@@ -146,7 +146,7 @@ func ExitCurd(err error) {
 		}
 	}
 
-	CurdOut("Have a great day!")
+	CurdOut("Exiting!")
 	if err != nil {
 		CurdOut(err)
 		if runtime.GOOS == "windows" {
@@ -192,6 +192,7 @@ func CurdOut(data interface{}) {
 					cmd := exec.Command("notify-send",
 						"-a", "Curd",
 						"-h", "string:x-canonical-private-synchronous:curd-notification",
+						"-e",
 						"Curd",
 						"-i", parts[1],
 						message)
@@ -205,6 +206,7 @@ func CurdOut(data interface{}) {
 				cmd := exec.Command("notify-send",
 					"-a", "Curd",
 					"-h", "string:x-canonical-private-synchronous:curd-notification",
+					"-e",
 					"Curd",
 					dataStr)
 				err := cmd.Run()
